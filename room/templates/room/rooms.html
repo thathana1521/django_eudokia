@@ -1,0 +1,8 @@
+{% extends "main/header.html"%}
+
+{% block content %}
+	
+	{% for room in object_list %}
+		<h5>{{ room.date|date:"Y-m-d" }}<a href="/room/{{room.id}}">{{room.name}}</a></h5>
+	{% endfor %}
+{% endblock %}

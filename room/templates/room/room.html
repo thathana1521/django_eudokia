@@ -1,0 +1,10 @@
+{% extends "main/header.html"%}
+
+{% block content %}
+	
+	<h3>{{room.name}}</h3>
+	<h6>Δημιουργήθηκε στις {{room.date}}</h6>
+	<h6>Xωριτικότητα: {{room.capacity|safe}}</h6>
+	<h6>Κτίριο: {{room.building}}</h6>
+	
+{% endblock %}
