@@ -1,0 +1,8 @@
+{% extends "main/header.html"%}
+
+{% block content %}
+	
+	{% for event in object_list %}
+		<h5>{{ event.day|date:"Y-m-d" }}<a href="/events/{{event.id}}">{{event.notes}}</a></h5>
+	{% endfor %}
+{% endblock %}
