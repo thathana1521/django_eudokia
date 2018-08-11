@@ -1,8 +1,21 @@
 {% extends "main/header.html"%}
 
+
 {% block content %}
-	
-	{% for event in object_list %}
-		<h5>{{ event.day|date:"Y-m-d" }}<a href="/events/{{event.id}}">{{event.notes}}</a></h5>
-	{% endfor %}
+
+	{% include "events/calendar.html"%}
+
+	<script>
+		fetch('http://localhost:8000/events/get-all-events').then((response) => {
+			return response.json();
+		}).then((data) => {
+
+			const events = [ {start: 30, end: 150}, {start: 540, end: 600}, {start: 560, end: 620}, {start: 610, end: 670} ];
+
+			layOutDay(events);
+
+		}).catch((err) => {
+			console.log(err);
+		});
+	</script>
 {% endblock %}
