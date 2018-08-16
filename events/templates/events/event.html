@@ -2,6 +2,7 @@
 
 {% block content %}
 	
-	<h3>{{event.day}}</h3>
-	
+	{% for event in object_list %}
+		<h5>hry<a href="/events/{{event.id}}">{{event.day}}</a></h5>
+	{% endfor %}
 {% endblock %}
