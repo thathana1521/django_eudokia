@@ -1,6 +1,3 @@
-{% extends "main/header.html"%}
-
-
 {% block content %}
 
 	{% include "events/calendar.html"%}
@@ -10,9 +7,20 @@
 			return response.json();
 		}).then((data) => {
 
-			const events = [ {start: 30, end: 150}, {start: 540, end: 600}, {start: 560, end: 620}, {start: 610, end: 670} ];
-
-			layOutDay(events);
+			//const events1 = [ {start: 30, end: 150}, {start: 540, end: 600}, {start: 560, end: 620}, {start: 610, end: 670} ];
+			even = [];
+			data.forEach((entry) => {
+				console.log(entry)
+				o = {
+					start: entry.fields.start_time.substring(0, 2),
+					end: entry.fields.end_time.substring(0, 2)
+				}
+				even.push(o);
+			})
+			
+			console.log(even);
+			layOutDay(even);
+			
 
 		}).catch((err) => {
 			console.log(err);

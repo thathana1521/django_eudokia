@@ -7,7 +7,7 @@ import json
 # Create your views here.
 
 def getHomePage(request):
-    return render(request, 'events/event.html')
+    return render(request, 'events/daily_events.html')
 
 def get_all_events(request):
     events = Event.objects.all()
