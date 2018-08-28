@@ -6,24 +6,23 @@
 		fetch('http://localhost:8000/events/get-all-events').then((response) => {
 			return response.json();
 		}).then((data) => {
-
-			//const events1 = [ {start: 30, end: 150}, {start: 540, end: 600}, {start: 560, end: 620}, {start: 610, end: 670} ];
-			even = [];
+			event = [];
 			data.forEach((entry) => {
-				console.log(entry)
+				const start = new Date(`${entry.fields.day} ${entry.fields.start_time}`);
+				const end = new Date(`${entry.fields.day} ${entry.fields.end_time}`);
+				start.get
 				o = {
-					start: entry.fields.start_time.substring(0, 2),
-					end: entry.fields.end_time.substring(0, 2)
+					start: (start.getHours() - 8) * 60 + start.getMinutes(),
+					end: (end.getHours() - 8) * 60 + end.getMinutes()
 				}
-				even.push(o);
+				event.push(o);
 			})
-			
-			console.log(even);
-			layOutDay(even);
+			layOutDay(event);
+
 			
 
 		}).catch((err) => {
-			console.log(err);
+			throw err;
 		});
 	</script>
 {% endblock %}
