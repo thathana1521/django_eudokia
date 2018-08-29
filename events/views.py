@@ -13,10 +13,12 @@ def getHomePage(request):
 def get_all_events(request):
     events = Event.objects.all()
     
-    #for e in events:
-     #   today = datetime.today()
-      #  if e.day > today.date():
-       #     e.delete()
+    for e in events:
+        today = datetime.now().date()
+        print (today)
+        print (e.day)
+        if e.day == today:
+            e.delete()
 
     jsonEvents = json.loads(serializers.serialize('json', events))
     return JsonResponse(jsonEvents, safe=False)
